@@ -1,3 +1,6 @@
+" Autocmd to run push-to-git.sh on write to push changes to git
+autocmd BufWritePost vimrc silent! execute "!echo  ; if [ -f ./push-to-git.sh ]; then ./push-to-git.sh; fi;" | redraw!
+
 " To get used to hjkl instead of arrow keys
 nnoremap <up> <nop>
 nnoremap <down> <nop>
