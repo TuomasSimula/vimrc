@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-dir_path="`realpath "$0"`"
-path_to_vimrc="`dirname "$dir_path"`/vimrc"
+file_path="`realpath "$0"`"
+dir_path="`dirname "$file_path"`"
+path_to_vimrc="$dir_path/vimrc"
 tgt_path="`realpath -s ~/.vimrc`"
 
 if [ -f ~/.vimrc ] || [ -L ~/.vimrc ]
@@ -20,3 +21,16 @@ else
 	ln -s "$path_to_vimrc" ~/.vimrc
 	echo "vimrc linked to $tgt_path"
 fi
+
+
+update_job="@reboot $dir_path/update_vimrc.sh > /dev/null"
+crontab -l > mycrontab
+if ! grep -q "$update_job" mycrontab;
+then
+	echo "$update_job" >> mycrontab
+	crontab mycrontab
+	echo "set to update on reboot"
+else
+	echo "already set to update"
+fi
+rm mycrontab
