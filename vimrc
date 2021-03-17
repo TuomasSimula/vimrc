@@ -21,7 +21,7 @@ filetype plugin indent on
 
 " Some general rules
 set encoding=utf-8
-set scrolloff=5
+set scrolloff=999
 set showmode
 set showcmd
 set wildmenu
