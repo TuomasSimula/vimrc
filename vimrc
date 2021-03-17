@@ -47,6 +47,9 @@ set visualbell
 " Set leader key
 let mapleader=","
 
+" General key mappings
+nnoremap <leader>o o<ESC>
+
 " Search options
 set hlsearch
 set incsearch
