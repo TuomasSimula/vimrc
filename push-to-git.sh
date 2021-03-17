@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Set up to run when vimrc file is edited to make pushing changes in vimrc to git easy
+
 if [ -d "./.git" ]
 then	
 	read -p "Push changes to git? (y/n) " -r prompt 
