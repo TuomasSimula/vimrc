@@ -13,9 +13,19 @@ if [ -f $HOME/.vimrc ] || [ -L $HOME/.vimrc ]; then
 
 	if [[ $prompt =~ ^(yes|y)$ ]]; then
 		# Yes -> remove old ~/.vimrc and link new one there
-		rm $HOME/.vimrc
+		
+		if [ ! -d $dir_path/old-vimrc ]; then
+			mkdir $dir_path/old-vimrc
+		fi
+
+		# Save old .vimrc with timestamp as identifier
+		time=$(date +"%Y-%m-%dT%H:%M:%S")
+		mv $HOME/.vimrc $dir_path/old-vimrc/.vimrc-$time
+
+		# Link new .vimrc to correct place
 		ln -s "$path_to_vimrc" $HOME/.vimrc
 		echo "vimrc linked to $tgt_path"
+		echo "old .vimrc saved to $dir_path/old-vimrc/.old-vimrc-$time"
 	else
 		echo "setup failed"
 	fi
@@ -30,12 +40,15 @@ fi
 
 run_cmd="$dir_path/update-vimrc.sh"
 # Check that ~/.profile exists and doesn't already have the command included
-if [ -f $HOME/.profile ] && ! grep run_cmd $HOME/.profile ; then
-	# Append $run_cmd to ~/.profile
-	echo "$run_cmd" >> $HOME/.profile
-	echo "update-vimrc.sh added to $HOME/.profile"
+if [ -f $HOME/.profile ] ; then
+	
+	if ! grep -Fxq $run_cmd $HOME/.profile; then	
+		# Append $run_cmd to ~/.profile
+		echo "$run_cmd" >> $HOME/.profile
+		echo "update-vimrc.sh added to $HOME/.profile"
+	fi
 # If previous failed, check if ~/.profile doesn't yet exist
-elif [ ! -f $HOME/.profile ]; then
+elif ! [ -f $HOME/.profile ]; then
 	# Create ~/.profile and add $run_cmd
 	touch $HOME/.profile
 	echo "$run_cmd" >> $HOME/.profile
