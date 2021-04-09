@@ -1,5 +1,20 @@
 " Autocmd to run push-to-git.sh on write to push changes to git
-autocmd BufWritePost vimrc silent! execute "!echo  ; if [ -f ./push-to-git.sh ]; then ./push-to-git.sh; fi;" | redraw!
+let dir_name = fnamemodify(resolve(expand('%:p')), ':h')
+autocmd BufWritePost *vimrc silent! execute "!echo  ; 
+	\ if [ -f ".dir_name."/push-to-git.sh ]; then cd ".dir_name."; ./push-to-git.sh; fi;" | redraw!
+
+" Automatically install vim-plug (from https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation)
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+	silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Get plugin vim-material
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+Plug 'hzchirs/vim-material'
+call plug#end()
 
 " To get used to hjkl instead of arrow keys
 nnoremap <up> <nop>
@@ -63,6 +78,10 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
+" Quick .vimrc editing and sourcing
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
 " Text wrap settings
 set wrap
 set formatoptions=qrn1
@@ -86,5 +105,9 @@ vnoremap <F1> <ESC>
 " Fold tag
 nnoremap <leader>ft Vatzf
 
-" Colorscheme
-colorscheme torte
+" Colorscheme vim-material from https://github.com/hzchirs/vim-material
+if has('termguicolors')
+	set termguicolors
+endif
+set background=dark
+colorscheme vim-material
