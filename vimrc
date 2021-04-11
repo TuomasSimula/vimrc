@@ -33,6 +33,7 @@ set autoindent
 set tabstop=4
 set shiftwidth=4
 filetype plugin indent on
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
 " Some general rules
 set encoding=utf-8
