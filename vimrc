@@ -65,6 +65,7 @@ let mapleader=","
 
 " General key mappings
 nnoremap <leader>o o<ESC>
+nnoremap <space> i<space><ESC>l
 
 " Search options
 set hlsearch
