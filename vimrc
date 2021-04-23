@@ -67,6 +67,11 @@ let mapleader=","
 nnoremap <leader>o o<ESC>
 nnoremap <space> i<space><ESC>l
 
+" Switch line numbering styles
+" TODO: figure a neat way to cycle through these?
+nnoremap <leader>l :set relativenumber!<cr>
+nnoremap <leader>n :set number!<cr>
+
 " Search options
 set hlsearch
 set incsearch
