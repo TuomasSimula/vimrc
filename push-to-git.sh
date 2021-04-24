@@ -15,6 +15,6 @@ if [ -d "./.git" ]; then
 		git add .
 		read -p "Enter commit message: " commit_msg
 		git commit -m "$commit_msg"
-		git push >> echo
+		git push
 	fi
 fi
