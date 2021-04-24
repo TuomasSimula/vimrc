@@ -1,7 +1,15 @@
 " Autocmd to run push-to-git.sh on write to push changes to git
-let dir_name = fnamemodify(resolve(expand('%:p')), ':h')
-autocmd BufWritePost *vimrc silent! execute "!echo  ; 
-	\ if [ -f ".dir_name."/push-to-git.sh ]; then cd ".dir_name."; ./push-to-git.sh; fi;" | redraw!
+autocmd BufWritePost *vimrc silent! call PushVimrcToGit()
+function PushVimrcToGit()
+	source $MYVIMRC
+	let dir_name = fnamemodify(resolve(expand('%:p')), ':h')
+	execute "!echo  "
+	execute "!if [ -f ".dir_name."/push-to-git.sh ]; then cd ".dir_name."; ./push-to-git.sh; fi;"
+	redraw!
+endfunction
+
+" Quick .vimrc editing and sourcing
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " Automatically install vim-plug (from https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation)
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -15,6 +23,10 @@ endif
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 Plug 'hzchirs/vim-material'
 call plug#end()
+
+"inoremap { {<cr><cr>}<ESC>ki
+"inoremap ( ()<ESC>i
+"inoremap [ []<ESC>i
 
 " To get used to hjkl instead of arrow keys
 nnoremap <up> <nop>
@@ -84,10 +96,6 @@ vnoremap / /\v
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
-
-" Quick .vimrc editing and sourcing
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Text wrap settings
 set wrap
