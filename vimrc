@@ -10,6 +10,7 @@ endfunction
 
 " Quick .vimrc editing and sourcing
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Automatically install vim-plug (from https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation)
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -23,10 +24,6 @@ endif
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 Plug 'hzchirs/vim-material'
 call plug#end()
-
-"inoremap { {<cr><cr>}<ESC>ki
-"inoremap ( ()<ESC>i
-"inoremap [ []<ESC>i
 
 " To get used to hjkl instead of arrow keys
 nnoremap <up> <nop>
@@ -44,6 +41,7 @@ nnoremap k gk
 set autoindent
 set tabstop=4
 set shiftwidth=4
+set expandtab
 filetype plugin indent on
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
@@ -78,6 +76,8 @@ let mapleader=","
 " General key mappings
 nnoremap <leader>o o<ESC>
 nnoremap <space> i<space><ESC>l
+nnoremap <backspace> dh
+nnoremap <cr> i<cr><ESC>
 
 " Switch line numbering styles
 " TODO: figure a neat way to cycle through these?
