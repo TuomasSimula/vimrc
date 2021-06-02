@@ -79,9 +79,6 @@ nnoremap <leader>o o<ESC>
 nnoremap <space> i<space><ESC>l
 nnoremap <backspace> dh
 nnoremap <cr> i<cr><ESC>
-nnoremap <expr> <leader><space> "i" . (nr2char(getchar())) . "<ESC>"
-nnoremap <expr> <leader><leader> "mpA" . (nr2char(getchar())) . "<ESC>`pl"
-inoremap <expr> <leader><leader> "<ESC>mpA" . (nr2char(getchar())) . "<C-o>`p<C-o>l"
 
 " Switch line numbering styles
 " TODO: figure a neat way to cycle through these?
@@ -97,7 +94,7 @@ set ignorecase
 set smartcase
 nnoremap / /\v
 vnoremap / /\v
-nnoremap <leader>h :noh<cr>
+nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
