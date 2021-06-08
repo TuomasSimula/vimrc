@@ -45,6 +45,15 @@ set expandtab
 filetype plugin indent on
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
+" Folding rules
+set foldenable
+set foldmethod=syntax
+set foldlevel=0
+set foldcolumn=1
+set foldnestmax=1
+set foldopen=all
+set foldclose=all
+
 " Some general rules
 set encoding=utf-8
 set scrolloff=999
