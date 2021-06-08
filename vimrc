@@ -47,7 +47,7 @@ autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
 " Folding rules
 set foldenable
-set foldmethod=syntax
+set foldmethod=indent
 set foldlevel=0
 set foldcolumn=1
 set foldnestmax=1
