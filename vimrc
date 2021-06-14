@@ -46,7 +46,6 @@ filetype plugin indent on
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
 " Folding rules
-set foldenable
 set foldmethod=indent
 set foldlevel=0
 set foldcolumn=1
