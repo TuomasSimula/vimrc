@@ -46,7 +46,7 @@ filetype plugin indent on
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
 " Folding rules
-set foldmethod=indent
+nnoremap <leader>f :set foldmethod=indent<CR>
 set foldlevel=0
 set foldcolumn=1
 set foldnestmax=1
@@ -127,7 +127,7 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
 " Fold tag
-nnoremap <leader>ft Vatzf
+" nnoremap <leader>ft Vatzf
 
 " Colorscheme vim-material from https://github.com/hzchirs/vim-material
 if has('termguicolors')
