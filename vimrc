@@ -12,6 +12,8 @@ endfunction
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+execute pathogen#infect()
+
 " Automatically install vim-plug (from https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation)
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -62,6 +64,7 @@ set wildmenu
 set wildmode=list:longest
 set ttyfast
 set backspace=indent,eol,start 
+nnoremap <leader>u :UndotreeToggle<CR>
 
 "undo file to save changes even between file writes
 set undofile
