@@ -12,7 +12,7 @@ endfunction
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-execute pathogen#infect()
+"execute pathogen#infect()
 
 " Automatically install vim-plug (from https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation)
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -27,15 +27,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 Plug 'hzchirs/vim-material'
 call plug#end()
 
-" To get used to hjkl instead of arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+" Sensible line maneuvering
 nnoremap j gj
 nnoremap k gk
 
@@ -87,6 +79,7 @@ let mapleader=","
 
 " General key mappings
 nnoremap <leader>o o<ESC>
+nnoremap <leader>O O<ESC>
 nnoremap <space> i<space><ESC>l
 nnoremap <backspace> dh
 nnoremap <cr> i<cr><ESC>
