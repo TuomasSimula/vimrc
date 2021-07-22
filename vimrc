@@ -27,6 +27,9 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 Plug 'hzchirs/vim-material'
 call plug#end()
 
+" Set leader key
+let mapleader=","
+
 " Sensible line maneuvering
 nnoremap j gj
 nnoremap k gk
@@ -74,11 +77,8 @@ set ruler
 " No error beeping
 set visualbell
 
-" Set leader key
-let mapleader=","
-
 " General key mappings
-nnoremap <leader>o o<ESC>
+"nnoremap <leader>o o<ESC>
 nnoremap <leader>O O<ESC>
 nnoremap <space> i<space><ESC>l
 nnoremap <backspace> dh
