@@ -74,9 +74,6 @@ set number
 " Cursor position
 set ruler
 
-" No error beeping
-set visualbell
-
 " General key mappings
 "nnoremap <leader>o o<ESC>
 nnoremap <leader>O O<ESC>
