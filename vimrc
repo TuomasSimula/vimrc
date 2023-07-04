@@ -12,6 +12,9 @@ endfunction
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+" sudo write
+cmap w!! w !sudo cat > %
+
 "execute pathogen#infect()
 
 " Automatically install vim-plug (from https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation)
